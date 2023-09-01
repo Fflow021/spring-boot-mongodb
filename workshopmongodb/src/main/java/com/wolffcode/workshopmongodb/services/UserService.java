@@ -1,5 +1,6 @@
 package com.wolffcode.workshopmongodb.services;
 
+import com.wolffcode.workshopmongodb.dto.UserDTO;
 import com.wolffcode.workshopmongodb.entities.User;
 import com.wolffcode.workshopmongodb.repository.UserRepository;
 import com.wolffcode.workshopmongodb.services.exception.ObjectNotFoundException;
@@ -24,4 +25,11 @@ public class UserService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
+    public User insert(User obj) {
+        return repository.insert(obj);
+    }
+
+    public User fromDTO(UserDTO objDTO) {
+        return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
+    }
 }
