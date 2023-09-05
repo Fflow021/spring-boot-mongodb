@@ -1,9 +1,12 @@
 package com.wolffcode.workshopmongodb.entities;
 
 import com.wolffcode.workshopmongodb.dto.AuthorDTO;
+import com.wolffcode.workshopmongodb.dto.CommentDTO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Post implements Serializable {
@@ -12,6 +15,7 @@ public class Post implements Serializable {
     private String title;
     private String body;
     private AuthorDTO author;
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public Post() {
     }
@@ -26,6 +30,14 @@ public class Post implements Serializable {
 
     public AuthorDTO getAuthor() {
         return author;
+    }
+
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentDTO> comments) {
+        this.comments = comments;
     }
 
     public void setAuthor(AuthorDTO author) {
